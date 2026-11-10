@@ -15,10 +15,12 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Enable CORS for convenience
+from app.config import settings
+
+# Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=settings.ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -1,0 +1,31 @@
+# Render Blueprint specification (render.yaml)
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  # Healthcare Management System - Backend & Frontend Web Service
+  - type: web
+    name: caresync-web
+    runtime: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /api/health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: caresync-db
+          property: connectionString
+      - key: ALLOWED_ORIGINS
+        value: "*"
+
+databases:
+  # Managed PostgreSQL Database on Render
+  - name: caresync-db
+    region: oregon
+    plan: free
+    databaseName: caresync
+    user: caresync_user

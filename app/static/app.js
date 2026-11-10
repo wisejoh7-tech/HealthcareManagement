@@ -1,5 +1,6 @@
 // State & Selectors
-const API_BASE = '/api';
+// Supports runtime configuration via window.APP_CONFIG.API_BASE (e.g. for external S3/CloudFront/Render static hosting)
+const API_BASE = (window.APP_CONFIG && window.APP_CONFIG.API_BASE) ? window.APP_CONFIG.API_BASE : '/api';
 
 function escapeHtml(str) {
   if (str === null || str === undefined) return '';

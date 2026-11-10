@@ -36,6 +36,32 @@ A full-stack, modular Healthcare and Clinic Management System built with **FastA
 
 ---
 
+## 🚢 Deployment & Environment Setup
+
+CareSync is pre-configured for one-click deployment on **Render**, **AWS (App Runner, ECS Fargate, Elastic Beanstalk)**, and **Docker Compose**.
+
+Complete step-by-step guides and cloud infrastructure manifests are provided:
+- **Comprehensive Guide:** See [DEPLOYMENT.md](DEPLOYMENT.md) for complete instructions.
+- **Backend Environment Template:** [.env.example](.env.example) & [.env.production.example](.env.production.example)
+- **Frontend Environment Template:** [.env.frontend.example](.env.frontend.example)
+- **Render Blueprint:** [render.yaml](render.yaml)
+- **AWS App Runner Config:** [apprunner.yaml](apprunner.yaml)
+- **AWS ECS Task Definition:** [aws-task-definition.json](aws-task-definition.json)
+- **Docker Compose (Postgres + Backend):** [docker-compose.yml](docker-compose.yml)
+
+### Key Environment Variables
+
+| Variable | Description | Default / Example |
+|---|---|---|
+| `DATABASE_URL` | Database connection string (SQLite or PostgreSQL) | `sqlite:///./healthcare.db` |
+| `APP_ENV` | Application environment (`development`, `production`) | `development` |
+| `PORT` | Listening port for web server | `8000` |
+| `HOST` | Host address | `0.0.0.0` |
+| `ALLOWED_ORIGINS` | Permitted CORS origins | `*` |
+| `API_BASE_URL` | (Frontend) API base URL for standalone UI deployments | `/api` |
+
+---
+
 ## 🚀 Quickstart
 
 ### 1. Requirements & Installation
